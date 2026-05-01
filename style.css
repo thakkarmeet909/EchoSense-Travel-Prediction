@@ -1,0 +1,133 @@
+/* Nebula Graphite - Premium SaaS Dashboard Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;600;800&display=swap');
+
+:root {
+    --bg-base: #121212;
+    --bg-surface: #1e1e1e;
+    --primary: #8A3FFC; /* Electric Violet */
+    --primary-muted: rgba(138, 63, 252, 0.15);
+    --secondary: #5B2E91;
+    --text-main: #e0e0e0;
+    --text-dim: #9ca3af;
+    --glass-bg: rgba(30, 30, 30, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --violet-glow: rgba(138, 63, 252, 0.3);
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+.stApp {
+    background-color: var(--bg-base);
+    background-image: 
+        radial-gradient(at 100% 0%, rgba(138, 63, 252, 0.08) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(91, 46, 145, 0.05) 0px, transparent 50%);
+}
+
+h1, h2, h3 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* Nebula Glass Cards */
+.nebula-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1.5rem;
+}
+
+.nebula-card:hover {
+    border-color: rgba(138, 63, 252, 0.4);
+    transform: translateY(-4px) scale(1.005);
+    box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* Header Component */
+.header-container {
+    background: linear-gradient(90deg, var(--bg-surface), transparent);
+    padding: 1.5rem 2rem;
+    border-left: 4px solid var(--primary);
+    border-radius: 4px 16px 16px 4px;
+    margin-bottom: 2rem;
+}
+
+/* Metric Refinement */
+div[data-testid="stMetric"] {
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 1.25rem !important;
+    transition: border-color 0.3s ease;
+}
+
+div[data-testid="stMetric"]:hover {
+    border-color: var(--primary) !important;
+}
+
+label[data-testid="stMetricLabel"] {
+    color: var(--text-dim) !important;
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+}
+
+div[data-testid="stMetricValue"] {
+    color: white !important;
+    font-weight: 800 !important;
+}
+
+/* Buttons (Violet SaaS Style) */
+.stButton > button {
+    background-color: var(--primary) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.6rem 1.5rem !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 4px 12px var(--primary-muted) !important;
+}
+
+.stButton > button:hover {
+    background-color: #7a2dfb !important;
+    box-shadow: 0 8px 20px var(--violet-glow) !important;
+}
+
+/* Sidebar Customization */
+section[data-testid="stSidebar"] {
+    background-color: #0d0d0d !important;
+    border-right: 1px solid var(--glass-border);
+}
+
+/* Chart Container */
+.chart-wrapper {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Streamlit Element Hiding */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
