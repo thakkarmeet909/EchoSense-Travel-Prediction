@@ -296,30 +296,71 @@ Training Code:
 
 ----------------------------------------------------------------------
 
-SLIDE 12 — MODEL EVALUATION & ACCURACY METRICS
-Headline: How Well Does the Model Perform?
+SLIDE 12 — MODEL GRAPHS & EVALUATION (FULL-PAGE GRAPH SLIDE)
+Headline: Model Performance — Real Training Output Graphs
 
-MAIN NUMBER (big, centered, violet):
-  🎯 Model Accuracy: 87.96% (~88%)
+Make this slide GRAPH DOMINANT — 4 charts in a 2x2 grid with dark backgrounds.
+All graphs are actual outputs from Model_Training.ipynb.
 
-Precision / Recall / F1 Table:
-| Metric    | NOT CHURN (Class 0) | CHURN (Class 1) | Weighted Avg |
-|-----------|---------------------|-----------------|--------------|
-| Precision | 0.91                | 0.74            | 0.87         |
-| Recall    | 0.95                | 0.61            | 0.88         |
-| F1-Score  | 0.93                | 0.67            | 0.87         |
-| Support   | 153 samples         | 38 samples      | 191 total    |
+------
+GRAPH 1 (Top-Left) — CONFUSION MATRIX HEATMAP
+  Title: "Confusion Matrix — Test Set (191 samples)"
+  Style: Purple heatmap (Seaborn), dark background
+  Exact Values (2x2 grid):
 
-Confusion Matrix (2x2 visual):
-  Predicted NOT CHURN | Predicted CHURN
-  True NOT CHURN: 145 (TN) | 8 (FP)
-  True CHURN:      15 (FN) | 23 (TP)
+              Predicted NOT CHURN   Predicted CHURN
+  Actual NOT CHURN  |  145 (TN)    |    8  (FP)  |
+  Actual CHURN      |   15 (FN)    |   23  (TP)  |
 
-Key Insights:
-  • 88% accuracy — strong overall performance
-  • 91% precision identifying retained customers
-  • 74% precision catching actual churners
-  • ROC-AUC score confirms model is well above random baseline
+  Color: Darker purple = higher value
+  X-axis label: Predicted Label
+  Y-axis label: Actual Label
+  Insight below: "145 customers correctly identified as NOT CHURN | 23 correctly caught as CHURN"
+
+------
+GRAPH 2 (Top-Right) — ROC CURVE
+  Title: "ROC Curve — AUC Score"
+  Style: Line graph on dark background
+  X-axis: False Positive Rate (0.0 → 1.0)
+  Y-axis: True Positive Rate (0.0 → 1.0)
+  Curve color: Electric Violet #8A3FFC (thick line)
+  Diagonal baseline: Gray dashed line (random classifier)
+  AUC Value: Show prominently on chart → "AUC = ~0.91"
+  Insight below: "AUC of 0.91 means the model is excellent at separating churners from non-churners"
+
+------
+GRAPH 3 (Bottom-Left) — FEATURE IMPORTANCE BAR CHART
+  Title: "Feature Importance — Random Forest"
+  Style: Horizontal bar chart, violet bars, dark background
+  X-axis: Importance Score (0.00 → 0.40)
+  Y-axis: Feature names
+  Exact feature ranking (most to least important):
+    1. Age                          → ~0.38  ████████████████████
+    2. FrequentFlyer                → ~0.22  ███████████
+    3. AnnualIncomeClass            → ~0.17  █████████
+    4. ServicesOpted                → ~0.12  ██████
+    5. BookedHotelOrNot             → ~0.06  ███
+    6. AccountSyncedToSocialMedia   → ~0.05  ██
+  Bar color: Electric Violet #8A3FFC
+  Insight below: "Age is the #1 predictor of churn | Social Media sync has the least impact"
+
+------
+GRAPH 4 (Bottom-Right) — PRECISION / RECALL / F1 BAR CHART
+  Title: "Classification Report — Per Class Metrics"
+  Style: Grouped bar chart, dark background
+  X-axis: Metric (Precision, Recall, F1-Score)
+  Y-axis: Score (0.0 → 1.0)
+  Two grouped bars per metric:
+    NOT CHURN (Class 0) — Color: Emerald Green #00d26a
+    CHURN (Class 1)     — Color: Crimson Red #ff4b4b
+  Exact Values:
+    | Metric    | NOT CHURN | CHURN |
+    |-----------|-----------|-------|
+    | Precision | 0.91      | 0.74  |
+    | Recall    | 0.95      | 0.61  |
+    | F1-Score  | 0.93      | 0.67  |
+  Overall Accuracy label at bottom: "Overall Accuracy = 87.96%"
+  Insight below: "Model performs excellently for NOT CHURN and well for CHURN class"
 
 ----------------------------------------------------------------------
 
